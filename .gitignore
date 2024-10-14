@@ -22,4 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+<<<<<<< HEAD
 *.md
+=======
+
+*.env
+>>>>>>> c6f2a27 (Tailwind configuration)
