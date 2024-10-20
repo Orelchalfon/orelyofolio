@@ -65,7 +65,7 @@ const SocialLinks: FC = () => {
 
 const LocationBlock: FC = () => {
     return (
-        <Block className="col-span-12 flex flex-col items-center md:col-span-3">
+        <Block className="col-span-12 grid place-items-center text-center md:col-span-3">
             <h3 className="text-2xl font-bold">
                 <FaLocationPin />
             </h3>
@@ -73,6 +73,29 @@ const LocationBlock: FC = () => {
                 12, Orel Street, <br />
                 TLV
             </p>
+        </Block>
+    );
+};
+const SubscriptionBlock: FC = () => {
+    return (
+        <Block className="col-span-12 md:col-span-9">
+            <form action="#" onSubmit={(e) => e.preventDefault()}>
+                <h3 className="text-2xl font-bold">Subscribe to my newsletter</h3>
+                <h3 className="mt-2 text-lg">Get updates on my latest projects and articles</h3>
+                <div className="grid grid-flow-dense grid-cols-8 gap-4">
+                    <input
+                        type="email"
+                        className="col-span-6 mt-4 rounded-md border border-zinc-700 bg-zinc-800 p-2 text-zinc-50"
+                        placeholder="Enter your email"
+                    />
+                    <button
+                        type="submit"
+                        className="col-span-2 mt-4 rounded-md bg-red-500 p-2 text-zinc-50 hover:bg-red-400"
+                    >
+                        Subscribe
+                    </button>
+                </div>
+            </form>
         </Block>
     );
 };
@@ -84,6 +107,7 @@ const Orelfolio: FC = () => {
                 <HeaderBlocks />
                 <SocialLinks />
                 <LocationBlock />
+                <SubscriptionBlock />
             </Grid>
         </div>
     );
