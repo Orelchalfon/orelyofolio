@@ -1,5 +1,6 @@
 import Lottie from 'lottie-react';
 import { FC } from 'react';
+import { FaLocationPin } from 'react-icons/fa6';
 import { SiGithub, SiLinkedin, SiWhatsapp, SiYoutube } from 'react-icons/si';
 import ArrowRight from '../../assets/Lottie/ArrowRight.json';
 import Developer from '../../assets/Lottie/Developer.json';
@@ -61,12 +62,28 @@ const SocialLinks: FC = () => {
         </>
     );
 };
+
+const LocationBlock: FC = () => {
+    return (
+        <Block className="col-span-12 flex flex-col items-center md:col-span-3">
+            <h3 className="text-2xl font-bold">
+                <FaLocationPin />
+            </h3>
+            <p className="mt-2 text-nowrap text-lg">
+                12, Orel Street, <br />
+                TLV
+            </p>
+        </Block>
+    );
+};
+
 const Orelfolio: FC = () => {
     return (
         <div className="h-[100svh] bg-zinc-900 px-4 py-12">
             <Grid>
                 <HeaderBlocks />
                 <SocialLinks />
+                <LocationBlock />
             </Grid>
         </div>
     );
