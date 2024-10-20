@@ -82,15 +82,15 @@ const SubscriptionBlock: FC = () => {
             <form action="#" onSubmit={(e) => e.preventDefault()}>
                 <h3 className="text-2xl font-bold">Subscribe to my newsletter</h3>
                 <h3 className="mt-2 text-lg">Get updates on my latest projects and articles</h3>
-                <div className="grid grid-flow-dense grid-cols-8 gap-4">
+                <div className="grid grid-flow-dense grid-cols-12 gap-4">
                     <input
                         type="email"
-                        className="col-span-6 mt-4 rounded-md border border-zinc-700 bg-zinc-800 p-2 text-zinc-50"
+                        className="col-span-12 md:col-span-9 mt-4 rounded-md border border-zinc-700 bg-zinc-800 p-2 text-zinc-50"
                         placeholder="Enter your email"
                     />
                     <button
                         type="submit"
-                        className="col-span-2 mt-4 rounded-md bg-red-500 p-2 text-zinc-50 hover:bg-red-400"
+                        className="col-span-12 mt-4 rounded-md bg-red-500 p-2 text-zinc-50 hover:bg-red-400 md:col-span-3"
                     >
                         Subscribe
                     </button>
@@ -102,7 +102,7 @@ const SubscriptionBlock: FC = () => {
 
 const Orelfolio: FC = () => {
     return (
-        <div className="h-[100svh] bg-zinc-900 px-4 py-12">
+        <div className="min-h-[100svh] bg-zinc-900 px-4 py-12">
             <Grid>
                 <HeaderBlocks />
                 <SocialLinks />
