@@ -1,6 +1,7 @@
 // src/App.tsx
 
-import Orelfolio from './Pages/Orelfolio';
+import { Orelfolio } from "./Pages";
+
 
 function App() {
     return <Orelfolio />;
