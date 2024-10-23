@@ -40,6 +40,7 @@ export const Block: React.FC<GridCellProps> = ({ className, ...props }) => {
                 'col-span-12 rounded-md border border-zinc-700 bg-zinc-800 p-6 text-zinc-50 md:col-span-4',
                 className,
             )}
+         
             {...props}
         />
     );

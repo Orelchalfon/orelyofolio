@@ -1,7 +1,9 @@
+import { AnimatePresence, motion } from 'framer-motion';
 import Lottie from 'lottie-react';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { FaLocationPin } from 'react-icons/fa6';
 import { SiGithub, SiLinkedin, SiWhatsapp, SiYoutube } from 'react-icons/si';
+import Cv from '../../assets/images/Cv.png';
 import ArrowRight from '../../assets/Lottie/ArrowRight.json';
 import Developer from '../../assets/Lottie/Developer.json';
 import { Grid } from '../../Components';
@@ -85,7 +87,7 @@ const SubscriptionBlock: FC = () => {
                 <div className="grid grid-flow-dense grid-cols-12 gap-4">
                     <input
                         type="email"
-                        className="col-span-12 md:col-span-9 mt-4 rounded-md border border-zinc-700 bg-zinc-800 p-2 text-zinc-50"
+                        className="col-span-12 mt-4 rounded-md border border-zinc-700 bg-zinc-800 p-2 text-zinc-50 md:col-span-9"
                         placeholder="Enter your email"
                     />
                     <button
@@ -99,6 +101,43 @@ const SubscriptionBlock: FC = () => {
         </Block>
     );
 };
+//i want to add a CvBlock that will contain my cv image or pdf.. i want it to expand with motion with the click of a button
+
+const OrelYoCv: FC = () => {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    return (
+        <Block className="col-span-12 row-span-2 place-items-center rounded-md border border-zinc-700 bg-zinc-800 p-6 text-zinc-50 md:col-span-8 md:col-start-3">
+            <h3 className="text-2xl font-bold">My CV</h3>
+            <button
+                className="mt-4 rounded-md bg-red-500 p-2 text-zinc-50 hover:bg-red-400"
+                onClick={() => setIsExpanded(!isExpanded)}
+            >
+                {isExpanded ? 'Hide CV' : 'View CV'}
+            </button>
+
+            <AnimatePresence>
+                {isExpanded && (
+                    <motion.div
+                        layout
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.5, ease: 'easeInOut' }}
+                        className="mt-4 w-full overflow-hidden"
+                    >
+                        {/* Display CV as an Image */}
+                        <img
+                            src={Cv}
+                            alt="Orel's CV"
+                            className="max-h-screen w-full rounded-md border border-zinc-700"
+                        />
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </Block>
+    );
+};
 
 const Orelfolio: FC = () => {
     return (
@@ -108,6 +147,7 @@ const Orelfolio: FC = () => {
                 <SocialLinks />
                 <LocationBlock />
                 <SubscriptionBlock />
+                <OrelYoCv />
             </Grid>
         </div>
     );
