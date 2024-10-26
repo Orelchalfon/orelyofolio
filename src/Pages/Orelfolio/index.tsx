@@ -3,12 +3,13 @@ import Lottie from 'lottie-react';
 import { FC, useState } from 'react';
 import { FaLocationPin } from 'react-icons/fa6';
 import { SiGithub, SiLinkedin, SiWhatsapp, SiYoutube } from 'react-icons/si';
-import Cv from '../../../public/assets/Images/Cv.png';
-import ArrowRight from '../../../public/assets/Lottie/ArrowRight.json';
-import Developer from '../../../public/assets/Lottie/Developer.json';
+import Cv from '../../assets/Images/Cv.png';
+import ArrowRight from '../../assets/Lottie/ArrowRight.json';
+import Developer from '../../assets/Lottie/Developer.json';
 import { Grid } from '../../Components';
 import { Block } from '../../Components/Grid';
 const HeaderBlocks: FC = () => {
+
     return (
         <Block className="col-span-12 row-span-2 rounded-md border border-zinc-700 bg-zinc-800 p-6 text-zinc-50 md:col-span-6">
             <div className="flex w-full items-start justify-between">
@@ -105,7 +106,6 @@ const SubscriptionBlock: FC = () => {
 
 const OrelYoCv: FC = () => {
     const [isExpanded, setIsExpanded] = useState(false);
-
     return (
         <Block className="col-span-12 row-span-2 place-items-center rounded-md border border-zinc-700 bg-zinc-800 p-6 text-zinc-50 md:col-span-8 md:col-start-3">
             <h3 className="text-2xl font-bold">My CV</h3>
