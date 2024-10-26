@@ -3,9 +3,9 @@ import Lottie from 'lottie-react';
 import { FC, useState } from 'react';
 import { FaLocationPin } from 'react-icons/fa6';
 import { SiGithub, SiLinkedin, SiWhatsapp, SiYoutube } from 'react-icons/si';
-import Cv from '../../assets/images/Cv.png';
-import ArrowRight from '../../assets/Lottie/ArrowRight.json';
-import Developer from '../../assets/Lottie/Developer.json';
+import Cv from '../../../public/assets/Images/Cv.png';
+import ArrowRight from '../../../public/assets/Lottie/ArrowRight.json';
+import Developer from '../../../public/assets/Lottie/Developer.json';
 import { Grid } from '../../Components';
 import { Block } from '../../Components/Grid';
 const HeaderBlocks: FC = () => {
