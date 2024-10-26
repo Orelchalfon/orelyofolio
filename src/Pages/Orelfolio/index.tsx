@@ -18,8 +18,8 @@ const HeaderBlocks: FC = () => {
                 </div>
                 <h2 className="mt-4 inline-block text-3xl font-bold">OrelYoFolio</h2>
             </div>
-            <p className="mt-4 text-lg">
-                A portfolio website for Orel, a fictional developer. This project is built with React and Tailwind CSS.
+            <p className="mt-4 text-lg text-start">
+                Welcome to OrelYoFolio,the professional portfolio of Orel,a highly skilled software developer. This project showcases Orel's expertise in building scalable, modern web applications using React and Tailwind CSS.
             </p>
             <a
                 href="#"
