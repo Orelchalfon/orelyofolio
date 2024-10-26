@@ -3,7 +3,7 @@ import Lottie from 'lottie-react';
 import { FC, useState } from 'react';
 import { FaLocationPin } from 'react-icons/fa6';
 import { SiGithub, SiLinkedin, SiWhatsapp, SiYoutube } from 'react-icons/si';
-import Cv from '../../../src/assets/images/Cv.png';
+import Cv from '../../assets/images/Cv.png';
 import ArrowRight from '../../assets/Lottie/ArrowRight.json';
 import Developer from '../../assets/Lottie/Developer.json';
 import { Grid } from '../../Components';
