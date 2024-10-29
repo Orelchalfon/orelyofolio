@@ -38,6 +38,8 @@ const HeaderBlocks: FC = () => {
     );
 };
 const SocialLinks: FC = () => {
+    const whatsappPhoneNum = "+972526365123";
+    const whatsappMessage = "hello Orel, I visited your portfolio and I would like to get in touch with you"
     return (
         <>
             <Block className="col-span-6 bg-red-600 md:col-span-3">
@@ -55,7 +57,7 @@ const SocialLinks: FC = () => {
                 </a>
             </Block>
             <Block className="col-span-6 bg-green-500 md:col-span-3">
-                <a href="" className="grid h-full place-content-center text-3xl">
+                <a href={`https://wa.me/${whatsappPhoneNum}?text=${whatsappMessage}`} className="grid h-full place-content-center text-3xl">
                     <SiWhatsapp />
                 </a>
             </Block>
