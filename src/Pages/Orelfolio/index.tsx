@@ -1,6 +1,7 @@
+import emailjs from '@emailjs/browser';
 import { AnimatePresence, motion } from 'framer-motion';
 import Lottie from 'lottie-react';
-import { FC, useState } from 'react';
+import { FC, useRef, useState } from 'react';
 import { FaLocationPin } from 'react-icons/fa6';
 import { SiGithub, SiLinkedin, SiWhatsapp, SiYoutube } from 'react-icons/si';
 import Cv from '../../assets/Images/Cv.png';
@@ -8,6 +9,7 @@ import ArrowRight from '../../assets/Lottie/ArrowRight.json';
 import Developer from '../../assets/Lottie/Developer.json';
 import { Grid } from '../../Components';
 import { Block } from '../../Components/Grid';
+import { templateParamsType } from '../../Utils/types';
 const HeaderBlocks: FC = () => {
 
     return (
@@ -80,16 +82,43 @@ const LocationBlock: FC = () => {
     );
 };
 const SubscriptionBlock: FC = () => {
+    const [email, setEmail] = useState('');
+    const formRef = useRef<HTMLFormElement>(null);
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (!email) return;
+        if (formRef.current) {
+            const templateParams: templateParamsType = {
+                to_email: email,
+                from_name: 'orel chalfon',
+                user_email: 'orelchalfon12@gmail.com',
+                message: 'Welcome to OrelYoFolio newsletter',
+
+            };
+            try {
+                const result = await emailjs.send('service_orelyofolio', 'template_orelyofolio', templateParams, 'ayAReS0YEgu_5jdVT');
+                console.log(result.text);
+                setEmail('');
+            } catch (error) {
+                const res = error instanceof Error ? error.message : error;
+                console.log(res);
+            }
+        }
+    };
+
     return (
         <Block className="col-span-12 md:col-span-9">
-            <form action="#" onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={onSubmit} ref={formRef}>
                 <h3 className="text-2xl font-bold">Subscribe to my newsletter</h3>
                 <h3 className="mt-2 text-lg">Get updates on my latest projects and articles</h3>
                 <div className="grid grid-flow-dense grid-cols-12 gap-4">
                     <input
                         type="email"
-                        className="col-span-12 mt-4 rounded-md border border-zinc-700 bg-zinc-800 p-2 text-zinc-50 md:col-span-9"
+                        name='to_email'
+                        className="col-span-12 mt-4 rounded-md outline-none border border-zinc-700 bg-zinc-800 p-2 text-zinc-50 md:col-span-9 "
                         placeholder="Enter your email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                     <button
                         type="submit"
