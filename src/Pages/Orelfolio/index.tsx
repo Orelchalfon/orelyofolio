@@ -1,15 +1,19 @@
 import emailjs from '@emailjs/browser';
 import { AnimatePresence, motion } from 'framer-motion';
 import Lottie from 'lottie-react';
-import { FC, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { FaLocationPin } from 'react-icons/fa6';
 import { SiGithub, SiLinkedin, SiWhatsapp, SiYoutube } from 'react-icons/si';
+import checkCircle from "../../assets/check-circle.svg";
+import errorCircle from "../../assets/cross-circle.svg";
 import Cv from '../../assets/Images/Cv.png';
 import ArrowRight from '../../assets/Lottie/ArrowRight.json';
 import Developer from '../../assets/Lottie/Developer.json';
 import { Grid } from '../../Components';
 import { Block } from '../../Components/Grid';
 import { templateParamsType } from '../../Utils/types';
+import { Notification } from './../../Components';
+
 const HeaderBlocks: FC = () => {
 
     return (
@@ -83,10 +87,24 @@ const LocationBlock: FC = () => {
 };
 const SubscriptionBlock: FC = () => {
     const [email, setEmail] = useState('');
+
+    const [isEmailSended, setIsEmailSended] = useState(false)
+    const [notificationClass, setNotificationClass] = useState("")
     const formRef = useRef<HTMLFormElement>(null);
+
+    useEffect(() => {
+        if (isEmailSended) {
+            setTimeout(() => {
+                setIsEmailSended(false)
+                setNotificationClass("notification-error")
+            }, 3000)
+        }
+    }, [isEmailSended])
+
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!email) return;
+        //    #TODO:remove the formRef cuz we changed the function from emailjs.sendForm into emailjs.send
         if (formRef.current) {
             const templateParams: templateParamsType = {
                 to_email: email,
@@ -98,8 +116,19 @@ const SubscriptionBlock: FC = () => {
             try {
                 const result = await emailjs.send('service_orelyofolio', 'template_orelyofolio', templateParams, 'ayAReS0YEgu_5jdVT');
                 console.log(result.text);
+
+
+                setNotificationClass("notification-success")
+                setIsEmailSended(true);
                 setEmail('');
+
+
             } catch (error) {
+
+                setNotificationClass("notification-error")
+                setIsEmailSended(true);
+
+                setEmail('');
                 const res = error instanceof Error ? error.message : error;
                 console.log(res);
             }
@@ -128,6 +157,14 @@ const SubscriptionBlock: FC = () => {
                     </button>
                 </div>
             </form>
+
+            {isEmailSended && (
+                <Notification
+                    classNames={notificationClass}
+                    icon={notificationClass.includes("success") ? checkCircle : errorCircle}
+                    emoji={notificationClass.includes("success") ? "🚀" : "😢"}
+                />
+            )}
         </Block>
     );
 };

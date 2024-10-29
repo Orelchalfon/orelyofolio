@@ -1,3 +1,3 @@
 import Grid from './Grid';
-export { Grid };
-
+import Notification from './Notification';
+export { Grid, Notification };
