@@ -1,9 +1,10 @@
 import emailjs from '@emailjs/browser';
 import { AnimatePresence, motion } from 'framer-motion';
+import "leaflet/dist/leaflet.css";
 import Lottie from 'lottie-react';
 import { FC, useEffect, useRef, useState } from 'react';
-import { FaLocationPin } from 'react-icons/fa6';
 import { SiGithub, SiLinkedin, SiWhatsapp, SiYoutube } from 'react-icons/si';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import checkCircle from "../../assets/check-circle.svg";
 import errorCircle from "../../assets/cross-circle.svg";
 import Cv from '../../assets/Images/Cv.png';
@@ -75,21 +76,32 @@ const SocialLinks: FC = () => {
 };
 
 const LocationBlock: FC = () => {
+    const position: [number, number] = [32.284628, 35.074551];
     return (
-        <Block className="col-span-12 grid place-items-center text-center md:col-span-3">
-            <h3 className="text-2xl font-bold">
-                <FaLocationPin />
-            </h3>
-            <p className="mt-2 text-nowrap text-lg">
-                12, Orel Street, <br />
-                TLV
-            </p>
+        <Block className="col-span-12 grid place-items-center text-center md:col-span-3 p-0 overflow-hidden">
+
+            <MapContainer
+                center={position}
+                zoom={15}
+                className='w-full h-full'
+            >
+                <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker position={position}>
+                    <Popup>
+                        Orel's Location
+                    </Popup>
+                </Marker>
+            </MapContainer>
+
+
         </Block>
     );
 };
 const SubscriptionBlock: FC = () => {
     const [email, setEmail] = useState('');
-
+    const emailjsApi = import.meta.env;
     const [isEmailSended, setIsEmailSended] = useState(false)
     const [notificationClass, setNotificationClass] = useState("")
     const formRef = useRef<HTMLFormElement>(null);
@@ -116,7 +128,11 @@ const SubscriptionBlock: FC = () => {
 
             };
             try {
-                const result = await emailjs.send('service_orelyofolio', 'template_orelyofolio', templateParams, 'ayAReS0YEgu_5jdVT');
+                const result = await emailjs.send(
+                    emailjsApi.VITE_EMAILJS_SERVICE_ID.toString(),
+                    emailjsApi.VITE_EMAILJS_TEMPLATE_ID.toString(),
+                    templateParams,
+                    emailjsApi.VITE_EMAILJS_USER_ID.toString());
                 console.log(result.text);
 
 
