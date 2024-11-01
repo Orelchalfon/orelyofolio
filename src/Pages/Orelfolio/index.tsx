@@ -76,14 +76,14 @@ const SocialLinks: FC = () => {
 };
 
 const LocationBlock: FC = () => {
-    const position: [number, number] = [32.284628, 35.074551];
+    const position = { lat: 32.284628, lng: 35.074551 };
     return (
-        <Block className="col-span-12 grid place-items-center text-center md:col-span-3 p-0 overflow-hidden">
+        <Block className="col-span-12 row-span-12 p-0 overflow-hidden grid place-items-center text-center md:col-span-3 md:row-span-1 ">
 
             <MapContainer
                 center={position}
                 zoom={15}
-                className='w-full h-full'
+                className='w-full h-full '
             >
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

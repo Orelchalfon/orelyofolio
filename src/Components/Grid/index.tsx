@@ -15,7 +15,7 @@ export const Grid: React.FC<GridProps> = ({ className, ...props }) => {
             initial="init"
             animate="enter"
             transition={{ staggerChildren: .07375 }}
-            className={twMerge('m-auto grid max-w-4xl grid-flow-dense grid-cols-12 gap-4', className)}
+            className={twMerge('m-auto grid max-w-4xl grid-flow-dense grid-cols-12 grid-rows-2 gap-4', className)}
             {...props}
         />
     );
@@ -33,14 +33,14 @@ export const Block: React.FC<GridCellProps> = ({ className, ...props }) => {
             variants={{
                 init: { opacity: 0, scale: 0.85 },
                 enter: { opacity: 1, scale: 1, },
-                
+
             }}
-            
+
             className={twMerge(
                 'col-span-12 rounded-md border border-zinc-700 bg-zinc-800 p-6 text-zinc-50 md:col-span-4',
                 className,
             )}
-         
+
             {...props}
         />
     );
