@@ -1,6 +1,11 @@
 import emailjs from '@emailjs/browser';
 import { AnimatePresence, motion } from 'framer-motion';
-import "leaflet/dist/leaflet.css";
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import markerIconPng from 'leaflet/dist/images/marker-icon.png';
+import markerShadowPng from 'leaflet/dist/images/marker-shadow.png';
+
+
 import Lottie from 'lottie-react';
 import { FC, useEffect, useState } from 'react';
 import { SiGithub, SiLinkedin, SiWhatsapp, SiYoutube } from 'react-icons/si';
@@ -14,6 +19,7 @@ import { Grid } from '../../Components';
 import { Block } from '../../Components/Grid';
 import { templateParamsType } from '../../Utils/types';
 import { Notification } from './../../Components';
+
 const HeaderBlocks: FC = () => {
 
     return (
@@ -75,6 +81,14 @@ const SocialLinks: FC = () => {
 };
 
 const LocationBlock: FC = () => {
+    const customIcon = L.icon({
+        iconUrl: markerIconPng,
+        shadowUrl: markerShadowPng,
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41],
+    });
     const position = { lat: 32.284628, lng: 35.074551 };
     return (
         <Block className="col-span-12 row-span-12 p-0 overflow-hidden grid place-items-center text-center md:col-span-3 md:row-span-1 ">
@@ -87,9 +101,10 @@ const LocationBlock: FC = () => {
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <Marker position={position}>
+
+                <Marker position={position} icon={customIcon}>
                     <Popup>
-                        Orel's Location
+                        Orel's location
                     </Popup>
                 </Marker>
             </MapContainer>
