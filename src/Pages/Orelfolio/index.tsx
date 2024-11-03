@@ -2,7 +2,7 @@ import emailjs from '@emailjs/browser';
 import { AnimatePresence, motion } from 'framer-motion';
 import "leaflet/dist/leaflet.css";
 import Lottie from 'lottie-react';
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { SiGithub, SiLinkedin, SiWhatsapp, SiYoutube } from 'react-icons/si';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import checkCircle from "../../assets/check-circle.svg";
@@ -14,7 +14,6 @@ import { Grid } from '../../Components';
 import { Block } from '../../Components/Grid';
 import { templateParamsType } from '../../Utils/types';
 import { Notification } from './../../Components';
-
 const HeaderBlocks: FC = () => {
 
     return (
@@ -101,10 +100,10 @@ const LocationBlock: FC = () => {
 };
 const SubscriptionBlock: FC = () => {
     const [email, setEmail] = useState('');
-    const emailjsApi = import.meta.env;
     const [isEmailSended, setIsEmailSended] = useState(false)
     const [notificationClass, setNotificationClass] = useState("")
-    const formRef = useRef<HTMLFormElement>(null);
+
+
 
     useEffect(() => {
         if (isEmailSended) {
@@ -119,43 +118,48 @@ const SubscriptionBlock: FC = () => {
         e.preventDefault();
         if (!email) return;
         //    #TODO:remove the formRef cuz we changed the function from emailjs.sendForm into emailjs.send
-        if (formRef.current) {
-            const templateParams: templateParamsType = {
-                to_email: email,
-                from_name: 'orel chalfon',
-                user_email: 'orelchalfon12@gmail.com',
-                message: 'Welcome to OrelYoFolio newsletter',
 
-            };
-            try {
-                const result = await emailjs.send(
-                    emailjsApi.VITE_EMAILJS_SERVICE_ID.toString(),
-                    emailjsApi.VITE_EMAILJS_TEMPLATE_ID.toString(),
-                    templateParams,
-                    emailjsApi.VITE_EMAILJS_USER_ID.toString());
-                console.log(result.text);
+        const templateParams: templateParamsType = {
+            to_email: email,
+            from_name: 'orel chalfon',
+            user_email: 'orelchalfon12@gmail.com',
+            message: 'Welcome to OrelYoFolio newsletter',
 
+        };
+        if (!email) return
+        try {
+            const result = await emailjs.send(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID.toString(),
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID.toString(),
+                templateParams,
+                import.meta.env.VITE_EMAILJS_USER_ID.toString(),
 
-                setNotificationClass("notification-success")
-                setIsEmailSended(true);
-                setEmail('');
+            );
+            console.log(result.text);
 
 
-            } catch (error) {
-
-                setNotificationClass("notification-error")
-                setIsEmailSended(true);
-
-                setEmail('');
-                const res = error instanceof Error ? error.message : error;
-                console.log(res);
-            }
+            setNotificationClass("notification-success")
+            setIsEmailSended(true);
+            setEmail('');
         }
+
+
+
+        catch (error) {
+
+            setNotificationClass("notification-error")
+            setIsEmailSended(true);
+
+            setEmail('');
+            const res = error instanceof Error ? error.message : error;
+            console.log(res);
+        }
+
     };
 
     return (
         <Block className="col-span-12 md:col-span-9">
-            <form onSubmit={onSubmit} ref={formRef}>
+            <form onSubmit={onSubmit} >
                 <h3 className="text-2xl font-bold">Subscribe to my newsletter</h3>
                 <h3 className="mt-2 text-lg">Get updates on my latest projects and articles</h3>
                 <div className="grid grid-flow-dense grid-cols-12 gap-4">
