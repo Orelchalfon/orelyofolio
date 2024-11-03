@@ -30,30 +30,31 @@
     transition:
         transform 0.3s,
         opacity 0.3s;
-
-    .notification-body {
-        padding: 1rem;
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
-        justify-content: space-evenly;
-        p {
-            margin: 0;
-            font-size: 1.6rem;
-        }
-    }
-    .notification-progress {
-        position: absolute;
-        bottom: 1rem;
-        left: 1rem;
-        width: calc(100% - 2rem);
-        height: 0.2rem;
-        background: linear-gradient(to right, transparent, var(--primary));
-        border-radius: 0 0 1rem 1rem;
-        transform-origin: left;
-        animation: progress 2.6275s linear;
-    }
 }
+
+.notification-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.notification-body p {
+    margin: 0;
+    font-size: 1.6rem;
+}
+.notification-progress {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    width: calc(100% - 2rem);
+    height: 0.2rem;
+    background: linear-gradient(to right, transparent, var(--primary));
+    border-radius: 0 0 1rem 1rem;
+    transform-origin: left;
+    animation: progress 2.6275s linear;
+}
+
 @keyframes progress {
     0% {
         transform: scaleX(0);

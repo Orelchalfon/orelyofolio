@@ -1,9 +1,9 @@
 import emailjs from '@emailjs/browser';
 import { AnimatePresence, motion } from 'framer-motion';
 import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
 import markerIconPng from 'leaflet/dist/images/marker-icon.png';
 import markerShadowPng from 'leaflet/dist/images/marker-shadow.png';
+import 'leaflet/dist/leaflet.css';
 
 
 import Lottie from 'lottie-react';
@@ -173,7 +173,7 @@ const SubscriptionBlock: FC = () => {
     };
 
     return (
-        <Block className="col-span-12 md:col-span-9">
+        <Block className=" relative col-span-12 md:col-span-9">
             <form onSubmit={onSubmit} >
                 <h3 className="text-2xl font-bold">Subscribe to my newsletter</h3>
                 <h3 className="mt-2 text-lg">Get updates on my latest projects and articles</h3>
