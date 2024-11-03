@@ -195,7 +195,7 @@ const SubscriptionBlock: FC = () => {
 const OrelYoCv: FC = () => {
     const [isExpanded, setIsExpanded] = useState(false);
     return (
-        <Block className="col-span-12 row-span-2 place-items-center rounded-md border border-zinc-700 bg-zinc-800 p-6 text-zinc-50 md:col-span-8 md:col-start-3">
+        <Block className="col-span-12 row-span-2 place-items-center place-c rounded-md border border-zinc-700 bg-zinc-800 p-6 text-zinc-50 text-center md:col-span-8 md:col-start-3">
             <h3 className="text-2xl font-bold text-nowrap">My CV</h3>
             <button
                 className="mt-4 rounded-md bg-red-500 p-2 text-zinc-50 hover:bg-red-400"
