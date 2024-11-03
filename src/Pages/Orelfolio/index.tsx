@@ -144,10 +144,10 @@ const SubscriptionBlock: FC = () => {
         if (!email) return
         try {
             const result = await emailjs.send(
-                import.meta.env.VITE_EMAILJS_SERVICE_ID.toString(),
-                import.meta.env.VITE_EMAILJS_TEMPLATE_ID.toString(),
+                "service_orelyofolio",
+                "template_orelyofolio",
                 templateParams,
-                import.meta.env.VITE_EMAILJS_USER_ID.toString(),
+                "ayAReS0YEgu_5jdVT",
 
             );
             console.log(result.text);
