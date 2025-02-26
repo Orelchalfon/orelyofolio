@@ -12,7 +12,7 @@ import { SiGithub, SiLinkedin, SiWhatsapp, SiYoutube } from 'react-icons/si';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import checkCircle from "../../assets/check-circle.svg";
 import errorCircle from "../../assets/cross-circle.svg";
-import Cv from '../../assets/Images/Cv.png';
+import Cv from '../../assets/Images/orel_chalfon_resume.png';
 import ArrowRight from '../../assets/Lottie/ArrowRight.json';
 import Developer from '../../assets/Lottie/Developer.json';
 import { Grid } from '../../Components';
@@ -113,6 +113,9 @@ const LocationBlock: FC = () => {
         </Block>
     );
 };
+
+
+
 const SubscriptionBlock: FC = () => {
     const [email, setEmail] = useState('');
     const [isEmailSended, setIsEmailSended] = useState(false)
@@ -229,12 +232,14 @@ const OrelYoCv: FC = () => {
                         transition={{ duration: 0.5, ease: 'easeInOut' }}
                         className="mt-4 w-full overflow-hidden"
                     >
-                        {/* Display CV as an Image */}
-                        <img
-                            src={Cv}
-                            alt="Orel's CV"
-                            className="max-h-screen w-full rounded-md border border-zinc-700"
-                        />
+                        <a href="https://sg.docs.wps.com/l/sIOHirepKtKn8vQY?v=v2" target="_blank" rel="noopener noreferrer">
+                            <motion.img
+                                whileHover={{ scale: 1.1 }}
+                                src={Cv}
+                                alt="Orel's CV"
+                                className="max-h-screen w-full rounded-md border border-zinc-700"
+                            />
+                        </a>
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -244,13 +249,15 @@ const OrelYoCv: FC = () => {
 
 const Orelfolio: FC = () => {
     return (
-        <div className="min-h-[100svh] bg-zinc-900 px-4 py-12">
+        <div className="min-h-[100svh] bg-zinc-900  px-4 py-12">
             <Grid>
                 <HeaderBlocks />
                 <SocialLinks />
                 <LocationBlock />
                 <SubscriptionBlock />
                 <OrelYoCv />
+
+
             </Grid>
         </div>
     );

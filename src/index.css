@@ -85,3 +85,10 @@
         visibility: hidden;
     }
 }
+.map-section{
+overflow: hidden;
+height: 100%;
+}
+.center-map{
+    filter: brightness(.8);
+}
