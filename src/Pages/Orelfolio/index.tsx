@@ -12,13 +12,13 @@ import { SiGithub, SiLinkedin, SiWhatsapp, SiYoutube } from 'react-icons/si';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import checkCircle from "../../assets/check-circle.svg";
 import errorCircle from "../../assets/cross-circle.svg";
+import Cv from '../../assets/Images/orel_chalfon_resume.png';
 import ArrowRight from '../../assets/Lottie/ArrowRight.json';
 import Developer from '../../assets/Lottie/Developer.json';
 import { Grid } from '../../Components';
 import { Block } from '../../Components/Grid';
 import { templateParamsType } from '../../Utils/types';
 import { Notification } from './../../Components';
-const Cv = "public/assets/Images/orel_chalfon_resume.png";
 
 const HeaderBlocks: FC = () => {
 
